@@ -1,7 +1,6 @@
 import { DEBUG_MODE } from "./debug";
 import "./main.css";
 import { Application, Container, Text, Ticker } from "pixi.js";
-import type { GameState } from "./stateMachine";
 
 import * as elevation from "./ui/elevation";
 import * as streak from "./ui/streak";
@@ -45,21 +44,28 @@ export function initFrame(app: Application) {
   return uiElements;
 }
 
-export function frame(state: GameState, ticker?: Ticker) {
+export function frame(
+  _expectMove: boolean,
+  elevationScore: number,
+  streakScore: number,
+  lost: boolean,
+  gameStarted: boolean,
+  ticker?: Ticker,
+) {
   if (ticker) {
-    if (state.gameStarted) {
-      elevation.frame(state.elevation, ticker);
-      streak.frame(state.streak, ticker);
+    if (gameStarted) {
+      elevation.frame(elevationScore, ticker);
+      streak.frame(streakScore, ticker);
     }
   }
 
-  const showGameplayUi = state.gameStarted;
+  const showGameplayUi = gameStarted;
   elevationTextSprite.visible = showGameplayUi;
   streakTextSprite.visible = showGameplayUi;
 
-  startPrompt.frame(!state.gameStarted);
+  startPrompt.frame(!gameStarted);
 
-  if (state.lost) {
+  if (lost) {
     gameover.frame();
   }
 }

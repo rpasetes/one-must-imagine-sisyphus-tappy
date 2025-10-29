@@ -106,5 +106,12 @@ async function drawScene(state: GameState, ticker: Ticker) {
   obstacle.frame(app, state.obstacles);
   player.frame(state.player);
   enemy.frame(state.enemy);
-  ui.frame(state, ticker);
+  ui.frame(
+    state.expectMove,
+    state.elevation,
+    state.streak,
+    state.lost,
+    state.gameStarted,
+    ticker,
+  );
 }
