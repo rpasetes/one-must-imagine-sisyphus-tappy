@@ -20,11 +20,13 @@ export async function initializeGameState(): Promise<void> {
   inputs.initialize();
   // passing it off to the renderer
   renderer.initialize(gameState);
+  renderer.render(gameState);
 }
 
 function waitForPlayerInput(): void {
   if (inputs.inputState.get("Space")) {
     startMenu = false;
+    gameState = { ...gameState, gameStarted: true };
   }
 }
 

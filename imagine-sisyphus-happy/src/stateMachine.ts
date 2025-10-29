@@ -37,6 +37,7 @@ export type GameState = {
   lost: boolean;
   songStartTime: number;
   passedDistanceThreshold: boolean;
+  gameStarted: boolean;
 };
 
 const THRESHOLD = window.innerHeight / 5;
@@ -67,6 +68,7 @@ export const gameState: GameState = {
   lost: false,
   songStartTime: 0,
   passedDistanceThreshold: false,
+  gameStarted: false,
 };
 
 export function updateGame(
