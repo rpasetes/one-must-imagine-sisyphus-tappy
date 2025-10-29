@@ -54,7 +54,7 @@ export function initFrame(width: number, height: number) {
 
   const subtitleText = new Text({
     style: subtitleTextStyle,
-    text: "Tap Space to move to the beat and stay ahead of the Fury!",
+    text: "Tap Space to move to the beat and stay ahead of the Fury!\n\n Tap left and right arrow keys to avoid obstacles!",
   });
 
   subtitleText.anchor.set(0.5, 0.5);
