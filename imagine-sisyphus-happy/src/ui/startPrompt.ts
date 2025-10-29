@@ -30,6 +30,7 @@ export function initFrame(width: number, height: number) {
   titleText.x = width / 2;
   titleText.y = height / 2 - 80;
   titleText.text = "One Must Imagine Sisyphus Tappy";
+  titleText.scale.set(0.7);
 
   const subtitleTextStyle = new TextStyle({
     fontFamily: "Arial Black, Arial, sans-serif",
@@ -59,6 +60,7 @@ export function initFrame(width: number, height: number) {
   subtitleText.anchor.set(0.5, 0.5);
   subtitleText.x = width / 2;
   subtitleText.y = height / 2 + 200;
+  subtitleText.scale.set(0.7)
 
   container.addChild(titleText, subtitleText);
   container.visible = false;
