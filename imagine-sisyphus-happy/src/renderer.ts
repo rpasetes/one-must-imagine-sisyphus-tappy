@@ -96,7 +96,7 @@ export async function initialize(gameState: GameState) {
 
 // TODO: split rendering into the scene itself and the UI
 // TODO: write the UI
-export async function render(state: GameState) {
+export function render(state: GameState) {
   lastState = state; // atomic pointer swap
 }
 
@@ -106,5 +106,12 @@ async function drawScene(state: GameState, ticker: Ticker) {
   obstacle.frame(app, state.obstacles);
   player.frame(state.player);
   enemy.frame(state.enemy);
-  ui.frame(state.expectMove, state.elevation, state.streak, state.lost, ticker);
+  ui.frame(
+    state.expectMove,
+    state.elevation,
+    state.streak,
+    state.lost,
+    state.gameStarted,
+    ticker,
+  );
 }
